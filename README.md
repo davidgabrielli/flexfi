@@ -14,6 +14,11 @@ A Python package for individual and group-wise permutation feature importance an
 ```bash
 pip install flexfi
 ```
+## Compatibility and Requirements
+flexfi supports Python 3.8 - 3.12.
+The default installation includes a CPU-only build of PyTorch.
+For GPU acceleration, install a CUDA-enabled PyTorch build that matches your system.
+See https://pytorch.org/get-started/locally/ for installation details.
 
 ## Quick Start
 ```python
@@ -39,4 +44,19 @@ plot_fi_bar(results["fi_summary"], top_k=10)
 
 ## Citation
 
-If you use this package in your research, please cite...
+If you use this package in your research, please cite:
+
+David Gabrielli (2025).
+flexfi: Flexible Feature Importance for Neural Networks.
+Version 0.1.0.
+URL: https://github.com/davidgabrielli/flexfi
+
+@software{gabrielli2025flexfi,
+  author       = {David Gabrielli},
+  title        = {flexfi: Flexible Feature Importance for Neural Networks},
+  year         = {2025},
+  version      = {0.1.0},
+  url          = {https://github.com/davidgabrielli/flexfi}
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
