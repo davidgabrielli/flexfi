@@ -1,0 +1,27 @@
+# Include documentation files
+include README.md
+include LICENSE
+include CHANGELOG.md
+include pyproject.toml
+
+# Include test data but not test results
+recursive-include tests *.py
+recursive-include tests *.csv
+recursive-include tests *.txt
+
+# Include examples
+recursive-include examples *.py
+recursive-include examples *.ipynb
+
+# Include type information
+recursive-include flexfi py.typed
+recursive-include flexfi *.pyi
+
+# Exclude unnecessary files
+global-exclude __pycache__
+global-exclude *.py[cod]
+global-exclude *.so
+global-exclude .DS_Store
+global-exclude *.egg-info
+global-exclude .gitignore
+global-exclude .git

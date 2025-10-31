@@ -1,0 +1,112 @@
+[build-system]
+requires = ["setuptools>=61,<80", "wheel", "pip<25"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "flexfi"
+version = "0.1.0"
+description = "Flexible Feature Importance for Neural Networks"
+readme = "README.md"
+requires-python = ">=3.8, <3.13"
+license = { text = "MIT" }
+authors = [
+  { name = "David Gabrielli", email = "gabrielli.d@ufl.edu" }
+]
+
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Scientific/Engineering :: Bio-Informatics"
+]
+
+dependencies = [
+  # Core numeric / scientific stack
+  "numpy>=1.26,<2.0",
+  "pandas>=2.2,<3.0",
+  "scikit-learn>=1.4,<2.0",
+  "scipy>=1.11,<2.0",
+
+  # Deep learning
+  "torch==2.3.1",  # defaults to +cpu on most systems; GPU users can reinstall with CUDA
+  "torchvision==0.18.1",
+  "torchaudio==2.3.1",
+
+  # Plotting and visualization
+  "matplotlib>=3.8,<4.0",
+  "seaborn>=0.13,<0.14",
+  "adjusttext>=0.7.3",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.0",
+  "pytest-cov>=4.0",
+  "black>=24.0",
+  "flake8>=7.0",
+  "mypy>=1.10"
+]
+test = [
+  "pytest>=6.0",
+  "pytest-cov>=2.0"
+]
+docs = [
+  "sphinx>=4.0",
+  "sphinx-rtd-theme>=1.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/davidgabrielli/flexfi"
+Repository = "https://github.com/davidgabrielli/flexfi"
+Documentation = "https://github.com/davidgabrielli/flexfi#readme"
+"Bug Tracker" = "https://github.com/davidgabrielli/flexfi/issues"
+
+[tool.setuptools.packages.find]
+[tool.setuptools.package-data]
+flexfi = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = [
+  "--verbose",
+  "--strict-markers",
+  "--cov=flexfi",
+  "--cov-report=term-missing",
+  "--cov-report=html"
+]
+
+[tool.black]
+line-length = 100
+target-version = ['py38', 'py39', 'py310', 'py311']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = false
+ignore_missing_imports = true
